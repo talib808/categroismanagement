@@ -40,6 +40,32 @@ npm install
 ### The server will run on http://localhost:3000.
 
 - API Endpoints
+
+- Get All Categories
+
+- GET /categories: Returns all categories.
+- Description: Retrieves a list of all categories.
+```
+[
+    {
+        "id": 2,
+        "name": "Books Category",
+        "createdAt": "2024-09-19T03:22:48.000Z",
+        "updatedAt": "2024-09-19T03:37:12.000Z",
+        "subCategories": [
+            {
+                "id": 10,
+                "name": "NextJS Book",
+                "categoryId": 2,
+                "createdAt": "2024-09-19T03:36:12.000Z",
+                "updatedAt": "2024-09-19T03:36:12.000Z",
+                "CategoryId": 2
+            }
+        ]
+    }
+]
+
+```
 - Categories
 - GET /categories/categories/count
 
@@ -76,6 +102,9 @@ PUT /categories/
 - DELETE /categories/
 
 - Description: Delete a category by ID.
+
+
+
 - Subcategories
 - POST /subcategories
 
@@ -87,6 +116,46 @@ PUT /categories/
   "categoryId": 1 // ID of the associated category
 }
 ```
+- Get All Subcategories
+- Route: /subcategories
+
+- Description: Retrieves a list of all subcategories, optionally with their associated categories.
+- GET /subcategories: Returns all subcategories, optionally including associated category data.
+```
+[
+    {
+        "id": 10,
+        "name": "Nexts and NestJs",
+        "categoryId": 2,
+        "createdAt": "2024-09-19T03:36:12.000Z",
+        "updatedAt": "2024-09-19T03:38:47.000Z",
+        "CategoryId": 2,
+        "category": {
+            "id": 2,
+            "name": "Books Category",
+            "createdAt": "2024-09-19T03:22:48.000Z",
+            "updatedAt": "2024-09-19T03:37:12.000Z"
+        }
+    },
+    {
+        "id": 12,
+        "name": "Bootsstap",
+        "categoryId": 2,
+        "createdAt": "2024-09-19T03:54:46.000Z",
+        "updatedAt": "2024-09-19T03:54:46.000Z",
+        "CategoryId": 2,
+        "category": {
+            "id": 2,
+            "name": "Books Category",
+            "createdAt": "2024-09-19T03:22:48.000Z",
+            "updatedAt": "2024-09-19T03:37:12.000Z"
+        }
+    }
+]
+
+```
+
+
 - PUT /subcategories/
 
 - Description: Update an existing subcategory by ID.
